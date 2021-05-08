@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\News;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $categories = Category::factory(5)
+            ->has(News::factory(10)) // каждая категоряя имеет фабрику 10 новостей
+            ->create();
     }
 }
