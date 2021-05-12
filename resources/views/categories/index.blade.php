@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Все категории ') }}
+        </h2>
+    </x-slot>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все категории</title>
-</head>
+    <x-content-body>
+        @if ($category->isNotEmpty())
+            <ul>
+                @foreach ($category as $catItem)
+                    <li><a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}</a></li>
+                @endforeach
+            </ul>
+        @else
+            категорий нет
+        @endif
 
-<body>
+    </x-content-body>
 
-    <ul>
-        @foreach ($category as $catItem)
-        <li><a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}</a></li>
-        @endforeach
-    </ul>
+</x-app-layout>
 
-</body>
 
-</html>

@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Новости категории: '). $category->title }}
+        </h2>
+    </x-slot>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости категории: {{ $category->title }}</title>
-</head>
+    <x-content-body>
+        <p>Новости категории {{ $category->id }}:</p>
+        <h1> {{ $category->title }}</h1>
 
-<body>
+        <div>
+            @forelse ($news as $newsItem)
+                <li><a href="{{ route('news.show', ['news' => $newsItem]) }}">{{ $newsItem->title }}</a></li>
+            @empty
+                у данной категории нет новостей
+            @endforelse
 
-    <p>Новости категории {{ $category->id }}:</p>
-    <h1> {{ $category->title }}</h1>
+        </div>
+    </x-content-body>
 
-    <div>
-        @foreach ($news as $newsItem)
-        <li><a href="{{ route('news.show', ['news' => $newsItem]) }}">{{ $newsItem->title }}</a></li>
-        @endforeach
-    </div>
+</x-app-layout>
 
-</body>
-
-</html>

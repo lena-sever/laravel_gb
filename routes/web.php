@@ -17,9 +17,9 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+//Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');

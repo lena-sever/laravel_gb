@@ -11,7 +11,11 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::with('category')->get();
-        return view('news.index', compact('news'));
+        return view('news.index', [
+            'news' => $news,
+                'i' => 0
+            ]
+        );
     }
 
     public function show(News $news)

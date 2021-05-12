@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-content-body>
-        You're logged in! You're logged in!You're logged in!You're logged in!
+        You're logged in! in!
     </x-content-body>
 
 </x-app-layout>
