@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Hello GB!') }}
+        </h2>
+    </x-slot>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
-</head>
+    <x-content-body>
+        <h1>Hello GB!</h1>
+        <p>возраст: {{$age}}</p>
 
-<body>
+    </x-content-body>
 
-    <h3>
-        <ul>
-            <li><a href="{{ route('index') }}">Главная</a></li>
-            <li><a href="{{ route('project') }}">О проекте</a></li>
-            <li><a href="{{ route('cat.index') }}">Категории новостей</a></li>
-        </ul>
-    </h3>
-    <h1>Hello GB!</h1>
-    <p>возраст: {{$age}}
-    </p>
-
-</body>
-
-</html>
+</x-app-layout>

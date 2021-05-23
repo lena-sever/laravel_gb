@@ -25,8 +25,8 @@ class StoreNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:100'],
-            'description' => ['required', 'string', 'max:300'],
+            'title' => ['required', 'string', 'max:150'],
+            'description' => ['required', 'string', 'max:50000'],
             'category_id' => ['required', 'integer', 'exists:categories,id']
         ];
     }

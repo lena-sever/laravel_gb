@@ -9,7 +9,7 @@
         @if ($category->isNotEmpty())
             <ul>
                 @foreach ($category as $catItem)
-                    <li><a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}</a></li>
+                    <li>{{ $catItem->id }}. <a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}</a></li>
                 @endforeach
             </ul>
         @else

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\News\StoreNewsRequest;
+use App\Http\Requests\News\NewsShowRequest;
 use App\Models\News;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class NewsController extends Controller
         );
     }
 
-    public function show(News $news)
+    public function show(News $news) // NewsShowRequest $request (если поставить в параметры, будет валидировать, но ссылки не работают)
     {
         return view('news.show', compact('news'));
     }

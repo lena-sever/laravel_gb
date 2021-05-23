@@ -24,7 +24,9 @@
                 <div class="mt-4">
                     <x-label for="description" :value="__('Description')" />
 
-                    <x-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus />
+                    <textarea id="description" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"  name="description" cols="50" rows="10" :value="old('description')" required autofocus></textarea>
+
+{{--                    <x-input id="description" class="block mt-1 w-full" type="textarea" name="description" :value="old('description')" required autofocus />--}}
                 </div>
 
                 <div class="mt-4">
