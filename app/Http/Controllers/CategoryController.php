@@ -11,7 +11,9 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         // $category = Category::all();
-        $category = $category->get();
+        $category = Category::withCount('news')
+            ->withAvg('news', 'rating')
+            ->get();
         return view('categories.index', compact('category'));
     }
 

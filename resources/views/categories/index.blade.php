@@ -9,7 +9,10 @@
         @if ($category->isNotEmpty())
             <ul>
                 @foreach ($category as $catItem)
-                    <li>{{ $catItem->id }}. <a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}</a></li>
+                    <li>{{ $catItem->id }}. <a href="{{ route('cat.show', ['category' => $catItem]) }}"> {{ $catItem->title }}
+                            | Новостей: {{ $catItem->news_count }}
+                            | Средний рейтинг: {{ number_format($catItem->news_avg_rating, 1) }}
+                        </a></li>
                 @endforeach
             </ul>
         @else

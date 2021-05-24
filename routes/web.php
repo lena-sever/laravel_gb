@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::post('/news/create', [NewsController::class, 'store'])->name('news.store'
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/categories', [CategoryController::class, 'index'])->name('cat.index');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('cat.show');
+
+Route::get('/sources', [SourceController::class, 'index'])->name('sources.index');
+Route::get('/sources/{source}', [SourceController::class, 'show'])->name('sources.show');

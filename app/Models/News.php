@@ -35,11 +35,18 @@ class News extends Model
         'title',
         'description',
         'category_id',
+        'source_id',
+        'rating'
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function source()
+    {
+        return $this->belongsTo(Source::class);
     }
 
 }
