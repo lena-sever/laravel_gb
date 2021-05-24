@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+Route::post('/news/create', [NewsController::class, 'store'])->name('news.store');
+Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/categories', [CategoryController::class, 'index'])->name('cat.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('cat.show');
+
+Route::get('/sources', [SourceController::class, 'index'])->name('sources.index');
+Route::get('/sources/{source}', [SourceController::class, 'show'])->name('sources.show');

@@ -11,7 +11,6 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->age = 5;
-        
     }
 
     public function index() {
