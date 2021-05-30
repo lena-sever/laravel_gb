@@ -11,5 +11,7 @@
     <p class="mt-4">{{ $k }}. <a href="{{ route('news.show', ['news' => $news]) }}">
             {{ $news->title }}</a></p>
     <p class="mt-4 text-xs text-gray-500">{{ $news->created_at->format('d.m.Y') }}</p>
+    <p class="mt-4 text-xs text-gray-500"><b>Источник:</b> {{ $news->source->title  }}</p>
+    <p class="text-xs text-gray-500"><b>Рейтинг:</b> {{ $news->rating  }}</p>
 </div>
 

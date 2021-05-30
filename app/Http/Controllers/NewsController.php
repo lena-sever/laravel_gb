@@ -6,11 +6,13 @@ use App\Http\Requests\News\StoreNewsRequest;
 use App\Http\Requests\News\NewsShowRequest;
 use App\Models\News;
 use App\Models\Category;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+
+        public function index()
     {
         $news = News::with('category')->get();
         return view('news.index', [
@@ -28,15 +30,40 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('news.create', compact('categories'));
+        $sources = Source::all();
+        return view('news.create', compact('categories', 'sources'));
     }
 
     public function store(StoreNewsRequest $request)
     {
-        News::create($request->validated());
+        \Log::info('Calling store method in the controller');
+        try {
+            News::create($request->validated());
+        } catch (NewsSendMailCreateNewNews $e) {
+            return redirect()->back()->with('warning', 'Ошибка придобавлении новости!');
+        }
 
-        return redirect()->route('news.index')->with('success', 'Новость успешно добавлена');
+        return redirect()->route('news.index')->with('success', 'Новость успешно добавлена!');
+
     }
 
+    public function edit(News $news)
+    {
+        $categories = Category::all();
+        $sources = Source::all();
+        return view('news.edit', compact('news', 'categories', 'sources'));
+    }
+
+    public function update(News $news, StoreNewsRequest $request)
+    {
+        $news->update($request->validated());
+        return redirect()->route('news.index')->with('success', 'Новость успешно обновлена');
+    }
+
+    public function delete(News $news)
+    {
+        $news->delete($news);
+        return redirect()->route('news.index')->with('success', 'Новость успешно удалена');
+    }
 
 }

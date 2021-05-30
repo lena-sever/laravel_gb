@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('News') }}
+            Создание  новой новости
         </h2>
     </x-slot>
 
@@ -32,11 +32,20 @@
                 <div class="mt-4">
                     <x-label for="category_id" :value="__('Category')" />
 
-                    <select name="category_id" id="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select name="category_id" id="category_id" class="rounded-md my-3 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
+
+
+                    <x-label for="source_id" :value="__('Source')" />
+                    <select name="source_id" id="source_id" class="rounded-md my-3 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @foreach($sources as $source)
+                            <option value="{{ $source->id }}">{{ $source->title }}</option>
+                        @endforeach
+                    </select>
+
                 </div>
 
                 <div class="mt-4">
