@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Source;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\News;
@@ -22,12 +23,15 @@ class CreateNewsTest extends TestCase
 
     public function test_create_news_success()
     {
+        $this->withoutExceptionHandling();
         $category = Category::factory()->create(); // создаём категорию
+        $source = Source::factory()->create(); // создаём источник
 
         $newsData = [
             'title' => 'This is title',
             'description' => 'This is description',
             'category_id' => $category->id,
+            'source_id' => $source->id,
         ]; // данные тестовой новости
 
         $response = $this->post('/news/create', $newsData); // создаём новость

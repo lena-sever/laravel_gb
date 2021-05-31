@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\News;
 
+use App\Rules\CorrectWords;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,8 +26,8 @@ class StoreNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:150'],
-            'description' => ['required', 'string', 'max:50000'],
+            'title' => ['required', 'string', 'min:10', 'max:100', new CorrectWords],
+            'description' => ['required', 'string', 'min:5','max:50000', new CorrectWords],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'source_id' => ['required', 'integer', 'exists:sources,id']
         ];
