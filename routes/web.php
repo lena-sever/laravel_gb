@@ -30,13 +30,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
-Route::post('/news/create', [NewsController::class, 'store'])->name('news.store');
-Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
-Route::post('/update/{news}', [NewsController::class, 'update'])->name('news.update');
-Route::get('/edit/{news}', [NewsController::class, 'edit'])->name('news.edit');
-Route::post('/delete/{news}', [NewsController::class, 'delete'])->name('news.delete');
+
+Route::resource('/news', NewsController::class);
 
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('cat.index');
