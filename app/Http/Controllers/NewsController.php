@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\News\StoreNewsRequest;
-use App\Http\Requests\News\NewsShowRequest;
+use App\Http\Requests\News\UpdateNewsRequest;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Source;
@@ -54,7 +54,7 @@ class NewsController extends Controller
         return view('news.edit', compact('news', 'categories', 'sources'));
     }
 
-    public function update(News $news, StoreNewsRequest $request)
+    public function update(News $news, UpdateNewsRequest $request)
     {
         $news->update($request->validated());
         return redirect()->route('news.index')->with('success', 'Новость успешно обновлена');

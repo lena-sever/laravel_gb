@@ -18,7 +18,7 @@
                 <div>
                     <x-label for="title" :value="__('Title')" />
 
-                    <x-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{ $news->title }}" required autofocus />
+                    <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="$news->title" required autofocus />
                 </div>
 
                 <div class="mt-4">
