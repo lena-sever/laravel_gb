@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-content-body>
-        You're logged in! in!
+        Добро пожаловать!
     </x-content-body>
 
 </x-app-layout>

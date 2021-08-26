@@ -50,7 +50,35 @@
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
+
             </div>
+
+            <br>
+            <div class="text-right">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Registration') }}
+                </a>
+            </div>
+
         </form>
+
+        <!-- OAuth vk -->
+        <form method="POST" action="{{ route('login.vk') }}">
+            @csrf
+            <x-button class="ml-3">
+                {{ __('Log in vk') }}
+            </x-button>
+        </form>
+
+
+
+{{--        <div class="m-4">--}}
+{{--            <a href="{{ route('login.vk') }}">--}}
+{{--                <img src="img/icon_log_in_vk.png" style="max-width: 50px" alt="Log in vk">--}}
+{{--            </a>--}}
+{{--        </div>--}}
+
+
+
     </x-auth-card>
 </x-guest-layout>
