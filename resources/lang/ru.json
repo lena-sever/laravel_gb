@@ -50,6 +50,15 @@
     "Source": "Источник",
     "Create": "Создать",
     "Whoops! Something went wrong.": "Упс! Что-то пошло не так...",
+    "Register": "Зарегистрировать",
+    "Already registered?": "Уже зарегистрировались?",
+    "Name": "Имя",
+    "Password": "Пароль",
+    "Confirm Password": "Повторите пароль",
+    "Remember me": "Запомнить меня",
+    "Forgot your password?": "Забыли свой пароль?",
+    "Log in": "Войти",
+    "Registration": "Регистрация",
 
     "Your email address is not verified.": "Ваш email адрес не подтвержден."
 }
