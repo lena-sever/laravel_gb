@@ -22,7 +22,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewsCreated::class => [
             NewsSendMailCreateNewNews::class,
-        ]
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
+        ],
     ];
 
     /**

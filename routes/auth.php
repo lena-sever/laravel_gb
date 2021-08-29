@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -63,13 +64,28 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
 
-//
-//Route::get('/auth/redirect', function () {
-//    return Socialite::driver('github')->redirect();
-//});
-//
-//Route::get('/auth/callback', function () {
-//    $user = Socialite::driver('github')->user();
-//
-//    // $user->token
-//});
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('vkontakte')->redirect();
+})->name('auth.vk.redirect');
+
+Route::get('/auth/login/vk/callback', function () {
+
+    $vkUser = Socialite::driver('vkontakte')->user();
+
+    $user = User::whereEmail($vkUser->getEmail())->first();
+
+    if (!$user) {
+        $user = User::create([
+            'name' => $vkUser->getName(),
+            'email' => $vkUser->getEmail(),
+            'vk_id' => $vkUser->getId()
+        ]);
+    }
+
+    Auth::loginUsingId($user->id);
+
+    Session::regenerate();
+
+    return redirect()->route('dashboard');
+})->name('auth.vk.callback');
