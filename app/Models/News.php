@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Source $source
  * @method static \Illuminate\Database\Eloquent\Builder|News whereRating($value)
  * @method static \Illuminate\Database\Eloquent\Builder|News whereSourceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|News checkAuthenticated()
  */
 class News extends Model
 {
@@ -52,6 +53,13 @@ class News extends Model
     public function source()
     {
         return $this->belongsTo(Source::class);
+    }
+
+    public function scopeCheckAuthenticated($query)
+    {
+        if (\Auth::guest()) {
+            $query->where('source_id', 2); //гостю показываем только где источник с id=2
+        }
     }
 
 }

@@ -63,20 +63,20 @@
         </form>
 
         <!-- OAuth vk -->
-        <form method="POST" action="{{ route('login.vk') }}">
-            @csrf
-            <x-button class="ml-3">
-                {{ __('Log in vk') }}
-            </x-button>
-        </form>
+{{--        <form method="POST" action="{{ route('login.vk') }}">--}}
+{{--            @csrf--}}
+{{--            <x-button class="ml-3">--}}
+{{--                {{ __('Log in vk') }}--}}
+{{--            </x-button>--}}
+{{--        </form>--}}
 
 
 
-{{--        <div class="m-4">--}}
-{{--            <a href="{{ route('login.vk') }}">--}}
-{{--                <img src="img/icon_log_in_vk.png" style="max-width: 50px" alt="Log in vk">--}}
-{{--            </a>--}}
-{{--        </div>--}}
+        <div class="m-4">
+            <a href="{{ route('auth.vk.redirect') }}">
+                <img src="img/icon_log_in_vk.png" style="max-width: 50px" alt="Log in vk">
+            </a>
+        </div>
 
 
 

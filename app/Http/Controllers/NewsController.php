@@ -14,7 +14,7 @@ class NewsController extends Controller
 
         public function index()
     {
-        $news = News::with('category')->get();
+        $news = News::checkAuthenticated()->with('category')->get();
         return view('news.index', [
             'news' => $news,
                 'i' => 0
@@ -40,7 +40,7 @@ class NewsController extends Controller
         try {
             News::create($request->validated());
         } catch (NewsSendMailCreateNewNews $e) {
-            return redirect()->back()->with('warning', 'Ошибка придобавлении новости!');
+            return redirect()->back()->with('warning', 'Ошибка при добавлении новости!');
         }
 
         return redirect()->route('news.index')->with('success', 'Новость успешно добавлена!');
